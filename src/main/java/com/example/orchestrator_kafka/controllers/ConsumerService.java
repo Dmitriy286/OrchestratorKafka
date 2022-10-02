@@ -13,13 +13,6 @@ public class ConsumerService {
     @Autowired
     private KafkaProducer producer;
 
-
-    @KafkaListener(topics = "msg", groupId = "second")
-    public void secondMsgDTOListener(ConsumerRecord<Long, UserDto> record) {
-        System.out.println("This is data from second listener:");
-        System.out.println(record.value());
-    }
-
     @KafkaListener(topics = "stringmsg", groupId = "third")
     public void stringMsgListener(ConsumerRecord<Long, String> record) {
         System.out.println("This is data from third listener, got from python:");

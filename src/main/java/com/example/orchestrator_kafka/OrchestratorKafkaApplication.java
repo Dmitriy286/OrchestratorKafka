@@ -14,12 +14,7 @@ public class OrchestratorKafkaApplication {
     public static void main(String[] args) {
         SpringApplication.run(OrchestratorKafkaApplication.class, args);
     }
-
-//    @KafkaListener(topics="msg")
-//    public void msgListener(String msg){
-//        System.out.println(msg);
-//    }
-
+    
     @KafkaListener(topics="msg", groupId = "first")
     public void msgDTOListener(ConsumerRecord<Long, UserDto> record){
         System.out.println(record);
