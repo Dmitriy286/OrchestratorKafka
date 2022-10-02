@@ -36,7 +36,6 @@ public class ConsumerService {
         System.out.println(record.value());
         String data = RepositoryImitation.ordersData;
         producer.sendMessage("requestOrdersDataFromDB", data);
-
     }
 
     //temporary, data base listener imitation
@@ -44,7 +43,6 @@ public class ConsumerService {
     public void getOrdersDataRequestFromOrchestrator(ConsumerRecord<String, String> record) {
         System.out.println(record.value());
         producer.sendMessage("sendOrdersDataFromDB", record.value());
-
     }
 
     @KafkaListener(topics = "sendOrdersDataFromDB", groupId = "ordersDataGroup")
